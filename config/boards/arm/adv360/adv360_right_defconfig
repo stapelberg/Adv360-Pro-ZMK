@@ -61,7 +61,22 @@ CONFIG_LOG=y
 CONFIG_ZMK_USB_LOGGING=y
 
 
-
-
-
 CONFIG_BUILD_OUTPUT_UF2=y
+
+################################################################################
+# For more pleasant PC debugging: increase the idle timeout from 30s to 5m,
+# to ensure the num lock LED will turn on (on the right key block). Otherwise,
+# the right key block goes into power save mode and won’t show the num lock LED
+################################################################################
+
+# Increase idle timeout from the default of 30s (= 30000ms) to 5 minutes (= 300s).
+CONFIG_ZMK_IDLE_TIMEOUT=300000
+
+################################################################################
+# For lowest-possible input latency:
+# https://michael.stapelberg.ch/posts/2021-05-08-keyboard-input-latency-qmk-kinesis/
+################################################################################
+
+# eager debounce: https://zmk.dev/docs/features/debouncing#eager-debouncing
+CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS=0
+CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS=5
